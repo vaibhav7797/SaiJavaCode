@@ -53,3 +53,53 @@
 </div>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai Hind</title>
+    <link rel="stylesheet" href="element.css">
+</head>
+<body>
+<h1>asach kahitari type kelay</h1>
+<button>Click me!</button>
+<hr>
+<p>Lorem ipsum dolor <b>sit amet consectetur adipisicing elit</b> Quo excepturi ratione ducimus accusantium. At perspiciatis tenetur, accusamus suscipit sint <i> officia deleniti unde ratione, beatae atque similique corporis velit perferendis pariatur</i>, doloribus magnam. Beatae qui quas vitae <u> blanditiis facilis accusamus dolores! Quibusdam</u> voluptates adipisci expedita praesentium 10 <sup>15000</sup> nam vel dolore molestiae quos!</p>
+<hr>
+<h2>shopiing list</h2>
+<ul>
+    <li>Shengdane</li>
+    <li>Parle biscuit</li>
+    <li>shabudana</li>
+    <li>Sakhar</li>
+    <li>Mugdaal</li>
+    <li>Turdaal</li>
+    <li>Khaari</li>
+    <li>Mith </li>
+    <hr>
+    <h2>Masala bhaat recipee</h2>
+    <ol type="I">
+        <li>cutting sll the  egetsbles which you wants to add</li>
+        <li>Wash your favrite rice with water</li>
+        <li>Nonveg rice like:
+            <ul>
+                <li>Chicken piece</li>
+                <li>masala</li>
+                <li>biryaani ingredients</li>
+            </ul>
+        </li>
+        <li>put your coocker on gas</li>
+        <li>add 2 tispoon oil </li>
+        <li>add all the ingrdients that which you love</li>
+        <li>after 5 min stop the gas</li>
+        <li>serve your testy rice in bowls</li>
+    </ol>
+</ul>
+<hr>
+<a href="http://www.google.com" target="_blank">MyGoogle</a>
+<a href="page2.html">page2</a>
+</body>
+</html>
