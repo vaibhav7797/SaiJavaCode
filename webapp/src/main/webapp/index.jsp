@@ -1,6 +1,6 @@
 <h1> Hello Dear Students !! Welcome to DevOps Project-2 !! </h1>
 <h2> By Mr. Sai from Saidemy </h2>
-
+<h3> So now this war file is again created and deploy on internet by using CI/CD pipeline initeated by Mr. Vaibhav Pendhare </h3>
 <!DOCTYPE html>
 <html lang="en">
 <head>
