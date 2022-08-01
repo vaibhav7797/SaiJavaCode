@@ -1,11 +1,18 @@
 pipeline {
-  agent any
+  agent any {
   stages {
-    stage("Build") {
+    stage('Checkout') {
       steps {
-        sh 'mvn --batch-mode clean clover:setup test clover:aggregate clover:clover-s mvn-settings.xml'
-      step([
-        $class: 'CloverPublisher',
+        git 'https://github.com/vaibhav7797/SaiJavaCode.git'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'mvn clean clover:setup test clover:aggregate clover:clover'
+      }
+    }
+    stage('Report') {
+      steps {
         clover(cloverReportDir: 'target/site', cloverReportFileName: 'clover.xml',
           // optional, default is: method=70, conditional=80, statement=80
           healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
@@ -13,7 +20,7 @@ pipeline {
           unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
           // optional, default is none
           failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
-         ])
+        )
       }
     }
   }
