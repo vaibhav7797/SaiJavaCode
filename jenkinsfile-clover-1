@@ -1,5 +1,7 @@
 pipeline {
-  agent any {
+  agent {
+    label '!windows' // sh not generally available on Windows
+  }
   stages {
     stage('Checkout') {
       steps {
@@ -24,5 +26,4 @@ pipeline {
       }
     }
   }
-}
 }
