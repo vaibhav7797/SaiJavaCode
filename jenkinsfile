@@ -1,18 +1,35 @@
-pipeline {
-    agent any
-    environment {
-    PATH= "$PATH:/opt/maven1/bin"
-    }
-    stages {
-        stage ('Get code from git') {
-            steps {
-               git 'https://github.com/vaibhav7797/SaiJavaCode.git'
-            }
+node {
+    
+       def mvnHome = tool 'maven'
+       stage ("checkout") {
+        checkout([
+   $class: 'GitSCM', 
+   branches: [[name: '']], 
+   doGenerateSubmoduleConfigurations: false, 
+   extensions: [], 
+   submoduleCfg: [], 
+   userRemoteConfigs: [[
+       credentialsId: '	jenkins-ssh', 
+       url: 'git@github.com:vaibhav7797/SaiJavaCode.git'
+   ]]
+])
+     } 
+    
+        stage ("Build") {
+          sh "${mvnHome}/bin/mvn compile"
         }
-}
-        stage ('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-       } 
-}
+    
+        stage("Code Quality Scan") {
+         withSonarQubeEnv("sonarserver") {
+           sh "${mvnHome}/bin/mvn test" 
+        }
+    }
+     stage('SonarQube analysis') {
+    def scannerHome = tool 'sonarserver';
+    withSonarQubeEnv('sonarserver') { // If you have configured more than one global server connection, you can specify its name
+      sh "${scannerHome}/bin/sonar-scanner \
+        -D sonar.projectKey=project-test \
+        -D sonar.exclusions=vendor/**,resources/**,**/*.java \
+        -D sonar.host.url=http://ad7e8bf0d41e84904a318acbead9b963-1949465915.us-east-1.elb.amazonaws.com \
+        -D sonar.login=sqp_262b1909f8c9ef1e58b98cc462b92a2dee76842a"
+    }
