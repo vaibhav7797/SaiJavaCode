@@ -213,8 +213,6 @@
     <url>http://github.com/jleetutorial/maven-project</url>
   </scm>
          
-
-  <plugins>
     <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
@@ -272,7 +270,6 @@
         </execution>
       </executions>
     </plugin>
-  </plugins>
          
   <prerequisites>
     <maven>3.0.3</maven>
