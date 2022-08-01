@@ -45,40 +45,37 @@
           <autoVersionSubmodules>true</autoVersionSubmodules>
         </configuration>
       </plugin>
+             
      <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
       <version>0.8.8</version>
       <executions>
         <execution>
-          <id>prepare-agent</id>
           <goals>
             <goal>prepare-agent</goal>
           </goals>
         </execution>
         <execution>
-          <id>report</id>
-          <phase>prepare-package</phase>
+          <id>jacoco-report</id>
+          <phase>test</phase>
           <goals>
             <goal>report</goal>
           </goals>
                  <!-- default target target/jscoco/site/* -->
           <configuration>
                    <outputDirectory> target/jacoco-report</outputDirectory>
-                   <DataFile>${project.build.directory}/jacoco</DataFile>
-        <execution>
-          <id>check</id>
-          <goals>
-            <goal>check</goal>
-          </goals>
-          <configuration>
-            <check>
-              <instructionRatio>100</instructionRatio>
-              <branchRatio>95</branchRatio>
-              <lineRatio>90</lineRatio>
-              <methodRatio>90</methodRatio>
-              <classRatio>90</classRatio>
-            </check>
+                   <DataFile>${project.build.directory}/coverage-report/jacoco.exec</DataFile>
+        <executions>
+                 <execution>
+          <rules>
+              <rule>
+                  <element>CLASS</element>
+                       <excludes>
+                            <exclude>com.asimio.demo.Application</exclude>
+                            </excludes>
+                              </rule>
+                                </rules>
           </configuration>
         </execution>
       </executions>
