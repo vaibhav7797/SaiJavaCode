@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage("Build") {
       steps {
         sh 'mvn --batch-mode clean clover:setup test clover:aggregate clover:clover-s mvn-settings.xml'
-      steps([
+      step([
       $class: 'CloverPublisher',
         clover(cloverReportDir: 'target/site', cloverReportFileName: 'clover.xml',
           // optional, default is: method=70, conditional=80, statement=80
